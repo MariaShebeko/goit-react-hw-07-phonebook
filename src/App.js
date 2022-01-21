@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Container from './components/Container';
 import Section from './components/Section';
 import ContactForm from './components/ContactForm/ContactForm';

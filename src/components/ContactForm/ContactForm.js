@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getItems } from '../../redux/contacts/contacts-selectors';
-import contactsActions from '../../redux/contacts/contacts-actions';
-import { nanoid } from 'nanoid';
+import {
+  useAddContactMutation,
+  useFetchContactsQuery,
+} from '../../redux/contacts/contactsSlice';
+import { LoaderTriangle } from '../Loader/Loader';
 import s from './ContactForm.module.css';
 import Icon from '../Icon/Icon';
 
 export default function ContactForm() {
-  const contacts = useSelector(getItems);
+  const { data: contacts } = useFetchContactsQuery();
+  const [addContact, { isLoading }] = useAddContactMutation();
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
 
   const handleChange = event => {
     if (event.target.name === 'name') setName(event.target.value);
@@ -28,7 +30,7 @@ export default function ContactForm() {
       return alert('This number is allready exist');
     }
 
-    dispatch(contactsActions.addContact({ id: nanoid(), name, number }));
+    addContact({ name, number });
     reset();
   };
 
@@ -70,7 +72,8 @@ export default function ContactForm() {
           Number
         </label>
       </div>
-      <button className={s.button} type="submit">
+      <button className={s.button} type="submit" disabled={isLoading}>
+        {isLoading && <LoaderTriangle />}
         Add contact
         <Icon
           iconName="iconUserPlus"
