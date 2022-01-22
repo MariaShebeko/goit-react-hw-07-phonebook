@@ -3,7 +3,6 @@ import {
   useAddContactMutation,
   useFetchContactsQuery,
 } from '../../redux/contacts/contactsSlice';
-import { LoaderTriangle } from '../Loader/Loader';
 import s from './ContactForm.module.css';
 import Icon from '../Icon/Icon';
 
@@ -29,7 +28,6 @@ export default function ContactForm() {
     } else if (similarNumber) {
       return alert('This number is allready exist');
     }
-
     addContact({ name, number });
     reset();
   };
@@ -73,8 +71,7 @@ export default function ContactForm() {
         </label>
       </div>
       <button className={s.button} type="submit" disabled={isLoading}>
-        {isLoading && <LoaderTriangle />}
-        Add contact
+        {isLoading ? 'Adding...' : 'Add contact'}
         <Icon
           iconName="iconUserPlus"
           width="18"

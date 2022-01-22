@@ -3,7 +3,7 @@ import Icon from '../Icon/Icon';
 import s from './ContactList.module.css';
 
 export default function ContactItem({ id, name, number }) {
-  const [deleteContact] = useDeleteContactMutation();
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   return (
     <li className={s.item}>
       <p className={s.text}>
@@ -16,7 +16,7 @@ export default function ContactItem({ id, name, number }) {
         {name}: {number}
       </p>
       <button onClick={() => deleteContact(id)} className={s.button}>
-        Delete
+        {isDeleting ? 'Deleting...' : 'Delete'}
         <Icon iconName="iconBin" width="18" height="18" className={s.iconBin} />
       </button>
     </li>
