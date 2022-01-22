@@ -29,7 +29,7 @@
 
 .input:focus ~ label,
 .input:valid ~ label {
-  top: -15px;
+  top: -20px;
   font-size: 14px;
   color: #4f95da;
 }
