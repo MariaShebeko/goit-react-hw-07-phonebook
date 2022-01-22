@@ -3,8 +3,12 @@ import {
   useAddContactMutation,
   useFetchContactsQuery,
 } from '../../redux/contacts/contactsSlice';
-import s from './ContactForm.module.css';
 import Icon from '../Icon/Icon';
+import {
+  warningNotification,
+  successNotification,
+} from '../../helpers/notification';
+import s from './ContactForm.module.css';
 
 export default function ContactForm() {
   const { data: contacts } = useFetchContactsQuery();
@@ -24,11 +28,12 @@ export default function ContactForm() {
     const similarName = contacts.find(contact => contact.name === name);
     const similarNumber = contacts.find(contact => contact.number === number);
     if (similarName) {
-      return alert('This name is allready exist');
+      return warningNotification('This name is allready exist');
     } else if (similarNumber) {
-      return alert('This number is allready exist');
+      return warningNotification('This number is allready exist');
     }
     addContact({ name, number });
+    successNotification('Contact added');
     reset();
   };
 
