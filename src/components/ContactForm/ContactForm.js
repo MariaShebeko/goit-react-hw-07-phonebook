@@ -2,12 +2,9 @@ import { useState } from 'react';
 import {
   useAddContactMutation,
   useFetchContactsQuery,
-} from '../../redux/contacts/contactsSlice';
+} from 'redux/contacts/contactsSlice';
 import Icon from '../Icon/Icon';
-import {
-  warningNotification,
-  successNotification,
-} from '../../helpers/notification';
+import { warningNotification, successNotification } from 'helpers/notification';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {

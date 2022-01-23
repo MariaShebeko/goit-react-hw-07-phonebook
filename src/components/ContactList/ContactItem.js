@@ -1,4 +1,4 @@
-import { useDeleteContactMutation } from '../../redux/contacts/contactsSlice';
+import { useDeleteContactMutation } from 'redux/contacts/contactsSlice';
 import Icon from '../Icon/Icon';
 import s from './ContactList.module.css';
 

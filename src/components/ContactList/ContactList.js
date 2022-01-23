@@ -1,6 +1,6 @@
-import { useFetchContactsQuery } from '../../redux/contacts/contactsSlice';
+import { useFetchContactsQuery } from 'redux/contacts/contactsSlice';
 import { useSelector } from 'react-redux';
-import { getFilter } from '../../redux/contacts/contacts-selectors';
+import { getFilter } from 'redux/contacts/contacts-selectors';
 import ContactItem from './ContactItem';
 import { LoaderOval } from '../Loader/Loader';
 import s from './ContactList.module.css';
